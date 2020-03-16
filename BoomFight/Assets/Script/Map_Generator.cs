@@ -11,6 +11,9 @@ public class Map_Generator : MonoBehaviour
     GameObject Wall;
 
     [SerializeField]
+    GameObject SpawnPoint;
+
+    [SerializeField]
     protected int width = 11;
 
     [SerializeField]
@@ -28,14 +31,10 @@ public class Map_Generator : MonoBehaviour
         {
             for (int z = 0; z < length; z++)
             {
-                GameObject newTile = Instantiate(Ground);
+                //Placing the Ground everywhere
+                PlaceGround(offset, x, z);
 
-                newTile.transform.position = new Vector3(x, 0, z) * 10;
-
-                newTile.name = "Ground(" + x.ToString() + ", " + z.ToString() + ")";
-
-                newTile.transform.parent = this.transform;
-
+                //Placing walls in certain places
                 if (x == 0 || z == 0)
                 {
                     PlaceWall(offset, x, z);
@@ -48,8 +47,37 @@ public class Map_Generator : MonoBehaviour
                 {
                     PlaceWall(offset, x, z);
                 }
+
+                //Placing SpawnPoints in four places
+                if (x == 1 && z == 1)
+                {
+                    PlaceSpawn(offset, x, z);
+                }
+                else if (x == width - 2 && z == length - 2)
+                {
+                    PlaceSpawn(offset, x, z);
+                }
+                else if (x == 1 && z == length - 2)
+                {
+                    PlaceSpawn(offset, x, z);
+                }
+                else if (x == width - 2 && z == 1)
+                {
+                    PlaceSpawn(offset, x, z);
+                }
             }
         }
+    }
+
+    protected void PlaceGround(float offset, int x, int z)
+    {
+        GameObject newTile = Instantiate(Ground);
+
+        newTile.transform.position = new Vector3(x, 0, z) * 10;
+
+        newTile.name = "Ground(" + x.ToString() + ", " + z.ToString() + ")";
+
+        newTile.transform.parent = this.transform;
     }
 
     protected void PlaceWall(float offset, int x, int z)
@@ -59,6 +87,17 @@ public class Map_Generator : MonoBehaviour
         newTile.transform.position = new Vector3(x, height, z) * 10;
 
         newTile.name = "Wall(" + x.ToString() + ", " + z.ToString() + ")";
+
+        newTile.transform.parent = this.transform;
+    }
+
+    protected void PlaceSpawn(float offset, int x, int z)
+    {
+        GameObject newTile = Instantiate(SpawnPoint);
+
+        newTile.transform.position = new Vector3(x, 0, z) * 10;
+
+        newTile.name = "Spawn(" + x.ToString() + ", " + z.ToString() + ")";
 
         newTile.transform.parent = this.transform;
     }

@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 301057629067059934}
   - component: {fileID: 5389064098278458008}
   - component: {fileID: 5260415689673509876}
+  - component: {fileID: 754988396487042121}
   m_Layer: 0
   m_Name: PlaceHolder
   m_TagString: Untagged
@@ -180,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementSpeed: 3
   RotationSpeed: 150
-  Bomb: {fileID: 0}
+  Bomb: {fileID: 6507240914671910428, guid: f453e7afe92478b46b1ee473b8b3aefc, type: 3}
   BombSpawnPoint: {fileID: 0}
 --- !u!114 &5260415689673509876
 MonoBehaviour:
@@ -215,6 +216,28 @@ MonoBehaviour:
     i15: 0
   m_ServerOnly: 0
   m_LocalPlayerAuthority: 0
+--- !u!114 &754988396487042121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2880554045050232582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d6c522af31447398568cc65334232b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!1 &3398686600110478427
 GameObject:
   m_ObjectHideFlags: 0

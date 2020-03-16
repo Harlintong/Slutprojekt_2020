@@ -152,6 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ground: {fileID: 4074909227748327018, guid: 8fa4cb951067d2e48a0062aad18ef5ea, type: 3}
   Wall: {fileID: 3812871529065520641, guid: 671fcb4fa724ce74989d77961b524445, type: 3}
+  SpawnPoint: {fileID: 8061845382463854844, guid: 2bf2b4c1c30f47440ae067cd1c714093,
+    type: 3}
   width: 21
   length: 21
 --- !u!4 &468971168
@@ -226,7 +228,7 @@ MonoBehaviour:
   m_PlayerPrefab: {fileID: 2880554045050232582, guid: 8d8003766439df9488187ec25dadfa00,
     type: 3}
   m_AutoCreatePlayer: 1
-  m_PlayerSpawnMethod: 0
+  m_PlayerSpawnMethod: 1
   m_OfflineScene: 
   m_OnlineScene: 
   m_SpawnPrefabs: []
