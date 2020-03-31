@@ -17,7 +17,7 @@ public class Player_Controller : NetworkBehaviour
     [SerializeField]
     GameObject BombSpawnPoint;
 
-    float TimeBetweenBomb = 1f;
+    float TimeBetweenBomb = 5f;
     float TimeSinceLastBomb = 0f;
 
     public override void OnStartLocalPlayer()
@@ -42,5 +42,19 @@ public class Player_Controller : NetworkBehaviour
         transform.Translate(MovementVector);
 
         TimeSinceLastBomb += Time.deltaTime;
+
+        if (Input.GetAxisRaw("Fire1") > 0)
+        {
+            if (TimeSinceLastBomb > TimeBetweenBomb)
+            {
+                //Fire();
+                TimeSinceLastBomb = 0;
+            }
+        }
     }
+
+    /*void Fire()
+    {
+        GameObject Bomb = Instantiate(Bomb, BombSpawnPoint.position, BombSpawnPoint.rotation);
+    }*/
 }

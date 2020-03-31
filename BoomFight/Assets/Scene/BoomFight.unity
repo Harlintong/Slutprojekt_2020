@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24a0bae3a60a38a40901d7a7bf555d47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ground: {fileID: 4074909227748327018, guid: 8fa4cb951067d2e48a0062aad18ef5ea, type: 3}
+  Ground: {fileID: 8597492821650314478, guid: 8fa4cb951067d2e48a0062aad18ef5ea, type: 3}
   Wall: {fileID: 3812871529065520641, guid: 671fcb4fa724ce74989d77961b524445, type: 3}
   SpawnPoint: {fileID: 8061845382463854844, guid: 2bf2b4c1c30f47440ae067cd1c714093,
     type: 3}
@@ -231,7 +231,8 @@ MonoBehaviour:
   m_PlayerSpawnMethod: 1
   m_OfflineScene: 
   m_OnlineScene: 
-  m_SpawnPrefabs: []
+  m_SpawnPrefabs:
+  - {fileID: 6507240914671910428, guid: f453e7afe92478b46b1ee473b8b3aefc, type: 3}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
@@ -274,7 +275,7 @@ MonoBehaviour:
     m_MaxTimerTimeout: 12000
     m_MinNetSimulatorTimeout: 1
     m_MaxNetSimulatorTimeout: 12000
-  m_Channels: 
+  m_Channels: 0500000000000000
   m_UseWebSockets: 0
   m_UseSimulator: 0
   m_SimulatedLatency: 1
