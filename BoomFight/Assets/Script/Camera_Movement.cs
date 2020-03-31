@@ -5,29 +5,22 @@ using UnityEngine;
 public class Camera_Movement : MonoBehaviour
 {
     [SerializeField]
-    protected float MouseSensitivity = 100f;
+    Transform target;
 
-    public Transform PlayerBody;
+    [SerializeField]
+    float smoothing = 5f;
 
-    float xRotation = 0f;
+    Vector3 offset;
 
-    // Start is called before the first frame update
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        offset = tranform.position - target.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        float mouseX = Input.GetAxis("Mouse X") * MouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * MouseSensitivity * Time.deltaTime;
+        Vector3 targetCamPos = target.position + offset;
 
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-
-        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-
-        PlayerBody.Rotate(Vector3.up * mouseX);
+        transform.position = Vector3.Lerp(transform.position, targetCamPos, smoothing * Time.deltaTime);
     }
 }

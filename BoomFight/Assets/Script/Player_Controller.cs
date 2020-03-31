@@ -6,10 +6,7 @@ using UnityEngine;
 public class Player_Controller : NetworkBehaviour
 {
     [SerializeField]
-    float MovementSpeed = 3f;
-
-    [SerializeField]
-    float RotationSpeed = 150f;
+    float MovementSpeed = 6f;
 
     [SerializeField]
     GameObject Bomb;
@@ -17,29 +14,40 @@ public class Player_Controller : NetworkBehaviour
     [SerializeField]
     GameObject BombSpawnPoint;
 
+    Vector3 movement;
+    Rigidbody playerRigidbody;
+
+    int floorMask;
+
     float TimeBetweenBomb = 5f;
     float TimeSinceLastBomb = 0f;
+    float camRayLength = 100f;
 
     public override void OnStartLocalPlayer()
     {
         GetComponent<Renderer>().material.color = Color.red;
     }
 
-    void Update()
+    void Awake()
+    {
+        floorMask = LayerMask.GetMask("Ground");
+
+        playerRigidbody = GetComponent<Rigidbody>();
+    }
+
+    void FixedUpdate()
     {
         if (!isLocalPlayer)
         {
             return;
         }
 
-        float yRotation = Input.GetAxisRaw("Horizontal") * RotationSpeed * Time.deltaTime;
-        float zMovement = Input.GetAxisRaw("Vertical") * MovementSpeed * Time.deltaTime;
+        float yRotation = Input.GetAxisRaw("Horizontal");
+        float zMovement = Input.GetAxisRaw("Vertical");
 
-        Vector3 RotationVector = new Vector3(0, yRotation, 0);
-        Vector3 MovementVector = new Vector3(0, 0, zMovement);
+        Move(yRotation, zMovement);
 
-        transform.Rotate(RotationVector);
-        transform.Translate(MovementVector);
+        Turning();
 
         TimeSinceLastBomb += Time.deltaTime;
 
@@ -50,6 +58,33 @@ public class Player_Controller : NetworkBehaviour
                 //Fire();
                 TimeSinceLastBomb = 0;
             }
+        }
+    }
+
+    void Move (float yMovement, float zMovement)
+    {
+        movement.Set(yMovement, 0f, zMovement);
+
+        movement = movement.normalized * MovementSpeed * Time.deltaTime;
+
+        playerRigidbody.MovePosition(transform.position + movement);
+    }
+
+    void Turning()
+    {
+        Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        RaycastHit floorHit;
+
+        if(Physics.Raycast(camRay, out floorHit, camRayLength, floorMask))
+        {
+            Vector3 playerToMouse = floorHit.point - transform.position;
+
+            playerToMouse.y = 0f;
+
+            Quaternion newRotation = Quaternion.LookRotation(playerToMouse);
+
+            playerRigidbody.MoveRotation(newRotation);
         }
     }
 
