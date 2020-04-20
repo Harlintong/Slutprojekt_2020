@@ -6,6 +6,9 @@ using UnityEngine;
 public class Player_Controller : NetworkBehaviour
 {
     [SerializeField]
+    Camera playerCamera;
+
+    [SerializeField]
     float MovementSpeed = 6f;
 
     [SerializeField]
@@ -19,6 +22,7 @@ public class Player_Controller : NetworkBehaviour
 
     int floorMask;
 
+    float CameraVerticalAngle = 0f;
     float TimeBetweenBomb = 5f;
     float TimeSinceLastBomb = 0f;
     float camRayLength = 100f;
