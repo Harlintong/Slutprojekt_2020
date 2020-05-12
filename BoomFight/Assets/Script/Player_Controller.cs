@@ -59,7 +59,7 @@ public class Player_Controller : NetworkBehaviour
         {
             if (TimeSinceLastBomb > TimeBetweenBomb)
             {
-                //Fire();
+                PlaceBomb();
                 TimeSinceLastBomb = 0;
             }
         }
@@ -92,8 +92,8 @@ public class Player_Controller : NetworkBehaviour
         }
     }
 
-    /*void Fire()
+    void PlaceBomb()
     {
-        GameObject Bomb = Instantiate(Bomb, BombSpawnPoint.position, BombSpawnPoint.rotation);
-    }*/
+        Instantiate(Bomb, transform.position, Quaternion.identity);
+    }
 }

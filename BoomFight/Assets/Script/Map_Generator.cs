@@ -11,6 +11,9 @@ public class Map_Generator : MonoBehaviour
     GameObject Wall;
 
     [SerializeField]
+    GameObject Breakable_Wall;
+
+    [SerializeField]
     GameObject SpawnPoint;
 
     [SerializeField]
@@ -47,6 +50,7 @@ public class Map_Generator : MonoBehaviour
                 {
                     PlaceWall(offset, x, z);
                 }
+                
 
                 //Placing SpawnPoints in four places
                 if (x == 1 && z == 1)
@@ -64,6 +68,11 @@ public class Map_Generator : MonoBehaviour
                 else if (x == width - 2 && z == 1)
                 {
                     PlaceSpawn(offset, x, z);
+                }
+
+                if (x == 1 && z == 3)
+                {
+                    PlaceBreakable_Wall(offset, x, z);
                 }
             }
         }
@@ -83,6 +92,17 @@ public class Map_Generator : MonoBehaviour
     protected void PlaceWall(float offset, int x, int z)
     {
         GameObject newTile = Instantiate(Wall);
+
+        newTile.transform.position = new Vector3(x, height, z) * 10;
+
+        newTile.name = "Wall(" + x.ToString() + ", " + z.ToString() + ")";
+
+        newTile.transform.parent = this.transform;
+    }
+
+    protected void PlaceBreakable_Wall(float offset, int x, int z)
+    {
+        GameObject newTile = Instantiate(Breakable_Wall);
 
         newTile.transform.position = new Vector3(x, height, z) * 10;
 

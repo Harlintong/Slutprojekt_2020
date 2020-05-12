@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: 8411828115052122991}
   - component: {fileID: 7882205182179742032}
   - component: {fileID: 7545564679908672843}
+  - component: {fileID: 82835370701676073}
   m_Layer: 0
   m_Name: Breakable_Wall
   m_TagString: Untagged
@@ -471,6 +472,26 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &82835370701676073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3281948481381421616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6621caea8e4b33e44a3a5a57d6c09651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Wall_Health: 1
+  Power_Ups:
+  - {fileID: 6815460358571751269, guid: 6d7914f5505fe5e4fb997119e1387902, type: 3}
+  - {fileID: 5615985796031802965, guid: 8b680a0d7e9f4654fb0aaa976f6666dd, type: 3}
+  - {fileID: 5596368311921519596, guid: 9239433473b7daf40be9e14e5e3caf7d, type: 3}
+  lootTable: 280000002800000014000000
+  total: 0
+  randomNumber: 0
 --- !u!1 &4868184722313808850
 GameObject:
   m_ObjectHideFlags: 0
