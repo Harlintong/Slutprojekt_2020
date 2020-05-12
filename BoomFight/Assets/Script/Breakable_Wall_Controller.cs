@@ -10,8 +10,8 @@ public class Breakable_Wall_Controller : MonoBehaviour
     [SerializeField]
     int Wall_Health = 1;
 
-    //[Serialized]
-    public List<GameObject> Power_Ups;
+    [SerializeField]
+    public List<GameObject> Power_Ups; //Här lägger man alla power_ups som har ett chans att spawna
 
     [SerializeField]
     int[] lootTable =
@@ -21,7 +21,7 @@ public class Breakable_Wall_Controller : MonoBehaviour
         40, //power-up B
 
         20 //Power-up C
-    };
+    }; //Detta är möjligheterna av hur stor chanser är att en spawnar
 
     [SerializeField]
     int total;
@@ -40,7 +40,7 @@ public class Breakable_Wall_Controller : MonoBehaviour
 
         randomNumber = UnityEngine.Random.Range(0, total);
 
-        if (WallDestroyed = true)
+        if (WallDestroyed = true) //när vägen blir förstörd kommer ett power-up att spawna från listan
         {
             for (int i = 0; i < lootTable.Length; i++)
             {
@@ -62,7 +62,7 @@ public class Breakable_Wall_Controller : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (Wall_Health <= 0)
+        if (Wall_Health <= 0) //Vägen har bara ett health
         {
             WallDestroyed = true;
 
