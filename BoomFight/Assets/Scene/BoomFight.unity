@@ -152,6 +152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ground: {fileID: 8597492821650314478, guid: 8fa4cb951067d2e48a0062aad18ef5ea, type: 3}
   Wall: {fileID: 3812871529065520641, guid: 671fcb4fa724ce74989d77961b524445, type: 3}
+  Breakable_Wall: {fileID: 3281948481381421616, guid: e32c3f435b6eac54c92e0f45dacdd0ab,
+    type: 3}
   SpawnPoint: {fileID: 8061845382463854844, guid: 2bf2b4c1c30f47440ae067cd1c714093,
     type: 3}
   width: 21
